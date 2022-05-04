@@ -21,26 +21,6 @@ pipeline {
             }
         }
 
-        stage('BUILD STAGE') {
-            agent{label 'docker_slave'}
-            steps {
-                // One or more steps need to be included within the steps block.
-            }
-        }
-
-        stage('PUSH TO DOCKER HUB') {
-            agent{label 'docker_slave'}
-            steps {
-                // One or more steps need to be included within the steps block.
-            }
-        } 
-
-        stage('DEPLOY') {
-            steps {
-                // One or more steps need to be included within the steps block.
-            }
-        } 
-
     }
 
 }
