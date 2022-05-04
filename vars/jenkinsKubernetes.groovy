@@ -15,21 +15,21 @@ pipeline {
 
     stages {
         stage('POLL SCM') {
-            agent{label 'docker'}
+            agent{label 'docker_slave'}
             steps {
                 checkout([$class: 'GitSCM', branches: [[name: "$gitBranch"]], extensions: [], userRemoteConfigs: [[credentialsId: "$gitCred", url: "$gitRepo"]]])
             }
         }
 
         stage('BUILD STAGE') {
-            agent{label 'docker'}
+            agent{label 'docker_slave'}
             steps {
                 // One or more steps need to be included within the steps block.
             }
         }
 
         stage('PUSH TO DOCKER HUB') {
-            agent{label 'docker'}
+            agent{label 'docker_slave'}
             steps {
                 // One or more steps need to be included within the steps block.
             }
