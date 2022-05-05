@@ -4,7 +4,7 @@ pipeline {
     environment {
         dockerCredential = "${dockerCred}"
         dockerRepository = "${dockerRepo}"
-        dockerTag = "${docTag}"
+        dockerTag = "${docTag}_$BUILD_NUMBER"
         gitRepo = "${grepo}"
         gitBranch = "${gbranch}"
         gitCred = "${gitcred}"
