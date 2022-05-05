@@ -32,7 +32,7 @@ pipeline {
             steps {
                 script {
                     //dockerimage = docker.build("'$dockerRepository':$dockerTag")
-                    dockerimage = dockerImage = docker.build registry + ":$dockerTag" 
+                    dockerimage = dockerImage = docker.build dockerRepository + ":$dockerTag" 
 
                 }
             }
