@@ -31,7 +31,9 @@ pipeline {
             agent{label 'docker_slave'}
             steps {
                 script {
-                    dockerimage = docker.build("'$dockerRepository':$dockerTag")
+                    //dockerimage = docker.build("'$dockerRepository':$dockerTag")
+                    dockerimage = dockerImage = docker.build registry + ":$dockerTag" 
+
                 }
             }
         }
