@@ -50,7 +50,12 @@ pipeline {
             }
         } 
 
-
+        stage ('Deploy') {
+            agent{label 'k8s_slave'}
+            steps {
+                sh 'kubctl set image deployment/webapp-deployment nodejs="$dockerRepository:$dockerTag" --record'
+            }
+        }
     }
 
 }
