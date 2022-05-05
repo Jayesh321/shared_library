@@ -15,6 +15,10 @@ pipeline {
         pollSCM '* * * * * '
     }
 
+    options {
+    buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
+    }
+
     stages {
         stage('POLL SCM') {
             agent{label 'docker_slave'}
