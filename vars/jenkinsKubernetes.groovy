@@ -1,7 +1,8 @@
-def call ( String dockerRepo = 'a', String docTag = 'a', String grepo = 'a', String gbranch = 'a', String gitcred = 'a'  ) {
+def call ( String dockerCred = 'a', String dockerRepo = 'a', String docTag = 'a', String grepo = 'a', String gbranch = 'a', String gitcred = 'a'  ) {
 
 pipeline {
     environment {
+        dockerCredential = "${dockerCred}"
         dockerRepository = "${dockerRepo}"
         dockerTag = "${docTag}_$BUILD_NUMBER"
         gitRepo = "${grepo}"
@@ -37,6 +38,17 @@ pipeline {
                 }
             }
         }
+
+        stage('PUSH TO DOCKER HUB') {
+            agent{label 'docker_slave'}
+            steps { 
+                script {
+                    docker.withRegistry('', "$dockerCredential") {
+                        dockerImage.push()
+                    }
+                }
+            }
+        } 
 
 
     }
