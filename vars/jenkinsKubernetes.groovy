@@ -46,6 +46,7 @@ pipeline {
                     docker.withRegistry('', "$dockerCredential") {
                         dockerImage.push()
                     }
+                    sh 'docker image rmi dockerimage'
                 }
             }
         } 
