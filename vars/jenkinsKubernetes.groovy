@@ -1,3 +1,4 @@
+//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
 def call ( String dockerCred = 'a', String dockerRepo = 'a', String docTag = 'a', String grepo = 'a', String gbranch = 'a', String gitcred = 'a'  ) {
 
 pipeline {
@@ -25,6 +26,13 @@ pipeline {
             agent{label 'docker_slave'}
             steps {
                 checkout([$class: 'GitSCM', branches: [[name: "$gitBranch"]], extensions: [], userRemoteConfigs: [[credentialsId: "$gitCred", url: "$gitRepo"]]])
+            }
+        }
+
+        stage('SonarQube analysis') {
+            def scannerHome = tool 'SonarScanner 4.0';
+            withSonarQubeEnv('Sonar_Server') { // If you have configured more than one global server connection, you can specify its name
+                sh "${scannerHome}/bin/sonar-scanner"
             }
         }
 
