@@ -36,16 +36,16 @@ pipeline {
             }
         }
 
-        stage('BUILD STAGE') {
-            agent{label 'docker_slave'}
-            steps {
-                script {
-                    //dockerimage = docker.build("'$dockerRepository':$dockerTag")
-                    dockerimage = dockerImage = docker.build dockerRepository + ":$dockerTag" 
+        // stage('BUILD STAGE') {
+        //     agent{label 'docker_slave'}
+        //     steps {
+        //         script {
+        //             //dockerimage = docker.build("'$dockerRepository':$dockerTag")
+        //             dockerimage = dockerImage = docker.build dockerRepository + ":$dockerTag" 
 
-                }
-            }
-        }
+        //         }
+        //     }
+        // }
 
         // stage('PUSH TO DOCKER HUB') {
         //     agent{label 'docker_slave'}
