@@ -1,4 +1,4 @@
-//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
+//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
 def call ( String dockerCred = 'a', String dockerRepo = 'a', String docTag = 'a', String grepo = 'a', String gbranch = 'a', String gitcred = 'a'  ) {
 
 pipeline {
