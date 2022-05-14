@@ -39,24 +39,24 @@ pipeline {
             }
         }
 
-        stage('PUSH TO DOCKER HUB') {
-            agent{label 'docker_slave'}
-            steps { 
-                script {
-                    docker.withRegistry('', "$dockerCredential") {
-                        dockerImage.push()
-                    }
-                    sh 'docker image rmi jayesh313/k8s:"$dockerTag"'
-                }
-            }
-        } 
+        // stage('PUSH TO DOCKER HUB') {
+        //     agent{label 'docker_slave'}
+        //     steps { 
+        //         script {
+        //             docker.withRegistry('', "$dockerCredential") {
+        //                 dockerImage.push()
+        //             }
+        //             sh 'docker image rmi jayesh313/k8s:"$dockerTag"'
+        //         }
+        //     }
+        // } 
 
-        stage ('Deploy') {
-            agent{label 'k8s_slave'}
-            steps {
-                sh 'kubectl set image deployment/webapp-deployment nodejs="$dockerRepository:$dockerTag" --record'
-            }
-        }
+        // stage ('Deploy') {
+        //     agent{label 'k8s_slave'}
+        //     steps {
+        //         sh 'kubectl set image deployment/webapp-deployment nodejs="$dockerRepository:$dockerTag" --record'
+        //     }
+        // }
     }
 
 }
