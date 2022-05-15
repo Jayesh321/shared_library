@@ -38,7 +38,8 @@ pipeline {
                         sh "${tool("scannerHome")}/bin/sonar-scanner \
                         -D sonar.projectKey=jenkins \
                         -D sonar.projectName=jenkins \
-                        -D sonar.host.url=http://52.66.115.34:9000/"
+                        -D sonar.host.url=http://52.66.115.34:9000/
+                        -Dsonar.sources=/var/lib/jenkins/workspace/$JOB_NAME"
                     }
                 }
             }
