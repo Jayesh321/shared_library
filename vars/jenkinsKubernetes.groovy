@@ -31,11 +31,8 @@ pipeline {
         stage('SonarQube analysis') {
             agent{label 'docker_slave'}
             def scannerHome = tool 'Sonar_Server';
-            steps {
-                
                 withSonarQubeEnv('Sonar_Server') { // If you have configured more than one global server connection, you can specify its name
                     sh "${scannerHome}/bin/sonar-scanner"
-                }
             }
         }
 
