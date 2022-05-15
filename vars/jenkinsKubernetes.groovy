@@ -36,9 +36,9 @@ pipeline {
                     def scannerHome = tool 'sonarqube';
                     withSonarQubeEnv('Sonar_Server') {
                         sh "${tool("scannerHome")}/bin/sonar-scanner \
-                        -Dsonar.projectKey=jenkins \
-                        -Dsonar.projectName=jenkins \
-                        -Dsonar.host.url=http://52.66.115.34:9000/"
+                        -D sonar.projectKey=jenkins \
+                        -D sonar.projectName=jenkins \
+                        -D sonar.host.url=http://52.66.115.34:9000/"
                     }
                 }
             }
