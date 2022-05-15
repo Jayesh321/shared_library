@@ -30,7 +30,7 @@ pipeline {
 
         stage('SonarQube analysis') {
             agent{label 'docker_slave'}
-            steps {
+            steps { 
                 script{
                     //def sonarScanner = tool name: 'sonarqube', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
                     def scannerHome = tool 'sonarqube';
