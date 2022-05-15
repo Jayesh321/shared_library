@@ -32,11 +32,12 @@ pipeline {
             agent{label 'docker_slave'}
             steps {
                 script{
-                    def scannerHome = tool 'sonarqube';
+                    def scannerHome = tool 'sonarqube', type 'hudson.plugins.sonar.SonarRunnerInstallation
                     withSonarQubeEnv('Sonar_Server') {
                         sh "${tool("scannerHome")}/bin/sonar-scanner \
                         -Dsonar.projectKey=jenkins \
-                        -Dsonar.projectName=jenkins"
+                        -Dsonar.projectName=jenkins" \
+                        -Dsonar.host.url=http://52.66.115.34:9000/"
                     }
                 }
             }
