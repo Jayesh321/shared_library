@@ -31,7 +31,7 @@ pipeline {
         stage('SonarQube analysis') {
             agent{label 'docker_slave'}
             steps { 
-                script{
+                
                     //def sonarScanner = tool name: 'sonarqube', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
                     def scannerHome = tool 'sonarqube';
                     withSonarQubeEnv('Sonar_Server') {
@@ -40,7 +40,7 @@ pipeline {
                         -Dsonar.projectName=jenkins \
                         -Dsonar.host.url=http://52.66.115.34:9000/"
                     }
-                }
+                
             }
         }
 
