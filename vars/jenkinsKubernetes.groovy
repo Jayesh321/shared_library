@@ -32,7 +32,7 @@ pipeline {
             agent{label 'docker_slave'}
             steps {
                 script{
-                    def scannerHome = tool 'Sonar_Server';
+                    def scannerHome = tool 'sonarqube';
                     withSonarQubeEnv('Sonar_Server') {
                         sh "${tool("scannerHome")}/bin/sonar-scanner \
                         -Dsonar.projectKey=jenkins \
