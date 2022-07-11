@@ -1,3 +1,40 @@
+def call ( String repo = 'a', String branch = 'a', String git_cred = 'a')
+
+pipeline{
+    environment{
+        Git_Repo = "${repo}"
+        Git_Branch = "${branch}"
+        GIt_Cred = "${git_cred}"
+    }
+
+    agent none
+    
+    triggers {
+        pollSCM '* * * * *'
+    }
+
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
+    }
+
+    stages{
+        stage(SCM){
+            agent{label 'docker_slave'}
+            steps{
+                checkout([$class: 'GitSCM', branches: [[name: "$Git_Branch"]], extensions: [], userRemoteConfigs: [[credentialsId: "$GIt_Cred", url: "$Git_Repo"]]])
+            }
+
+        }
+    }
+
+    
+
+
+}
+
+
+
+
 // def call ( String dockerCred = 'a', String dockerRepo = 'a', String docTag = 'a', String grepo = 'a', String gbranch = 'a', String gitcred = 'a'  ) {
 
 // pipeline {
