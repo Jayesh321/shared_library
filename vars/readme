@@ -1,7 +1,0 @@
-Set Cred for git in jenkins (personale acces token: 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)
-goto manage jenkins ---> configure system ---> Global Pipeline Libraries  ---> given name ---->Default version
-(branch name) --->give repo & cred and save it.
-
-Shared Library Code in job:
-@Library('sharedLibrary') _   ----> this library name should be from jenkins Global Pipeline Libraries
-jenkinsKubernetes('https://github.com/Jayesh321/java_repo1.git', 'master', 'github')   #(jenkinsKubernetes ---> this should be scrip in var folder in github)
