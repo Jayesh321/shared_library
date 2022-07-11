@@ -45,7 +45,7 @@ pipeline {
             }
         }
 
-        // stage('BUILD STAGE') {
+         stage('BUILD STAGE') {
         //     agent{label 'docker_slave'}
         //     steps {
         //         script {
