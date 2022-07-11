@@ -1,4 +1,4 @@
-def call ( String repo = 'a', String branch = 'a', String git_cred = 'a')
+def call ( String repo = 'a', String branch = 'a', String git_cred = 'a'){
 
 pipeline{
     environment{
@@ -31,7 +31,7 @@ pipeline{
 
 
 }
-
+}
 
 
 
